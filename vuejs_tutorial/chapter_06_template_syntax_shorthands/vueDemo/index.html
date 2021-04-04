@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="seen">现在你看到我了</p>
+    <a v-bind:href="url">...</a>
+    <div><a v-bind:[attributeName]="url">...</a></div>
+    <div @click="click1">
+        <div @click="click2">click me</div>
+    </div>
+    <div @click="click1">
+        <div @click="click2.stop">click me stop</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            seen: true,
+            url: 'https://cn.vuejs.org/v2/guide/syntax.html',
+            attributeName: 'href',
+        },
+        methods: {
+            click1: function () {
+                console.log('click1......')
+            },
+            click2: function () {
+                console.log('click2......')
+            },
+        },
+    });
+
+</script>
+
+</body>
+</html>
