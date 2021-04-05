@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+    <div id="example-1">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+
+    <div id="example-2">
+        <!-- `greet` 是在下面定义的方法名 -->
+        <button v-on:click="greet">Greet</button>
+    </div>
+
+    <div id="example-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+
+    <!--    &lt;!&ndash; 阻止单击事件继续传播 &ndash;&gt;-->
+    <!--    <a v-on:click.stop="doThis"></a>-->
+
+    <!--    &lt;!&ndash; 提交事件不再重载页面 &ndash;&gt;-->
+    <!--    <form v-on:submit.prevent="onSubmit"></form>-->
+
+    <!--    &lt;!&ndash; 修饰符可以串联 &ndash;&gt;-->
+    <!--    <a v-on:click.stop.prevent="doThat"></a>-->
+
+    <!--    &lt;!&ndash; 只有修饰符 &ndash;&gt;-->
+    <!--    <form v-on:submit.prevent></form>-->
+
+    <!--    &lt;!&ndash; 添加事件监听器时使用事件捕获模式 &ndash;&gt;-->
+    <!--    &lt;!&ndash; 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 &ndash;&gt;-->
+    <!--    <div v-on:click.capture="doThis">...</div>-->
+
+    <!--    &lt;!&ndash; 只当在 event.target 是当前元素自身时触发处理函数 &ndash;&gt;-->
+    <!--    &lt;!&ndash; 即事件不是从内部元素触发的 &ndash;&gt;-->
+    <!--    <div v-on:click.self="doThat">...</div>-->
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'vue.js',
+            counter: 0
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            say: function (message) {
+                alert(message)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
